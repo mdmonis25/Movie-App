@@ -1,19 +1,12 @@
-const Test = (props) =>{
-  return(
-    <>
-    <h3>Age: {props.age}</h3>
-    <h3>Occupation: {props.occupation}</h3>
-    </>
-  )
-}
+import { useState } from "react";
 function App() {
+  const [counter, setCounter] = useState(0);
   return (
-    <>
-    <h1>Monis</h1>
-    <Test age={25} occupation = "Junior Dev" />
-    <Test age={27} occupation = "Dev" />
-    <Test age={30} occupation = "Senior Dev" />
-    </>
+    <div className="App">
+      <button onClick={()=> setCounter((prevCount)=> prevCount+1 )}>+</button>
+      <h1>{counter}</h1>
+      <button onClick={()=> setCounter((prevCount)=> prevCount-1 )}>-</button>
+    </div>
   );
 }
 
