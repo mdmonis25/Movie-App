@@ -1,17 +1,37 @@
-import { useEffect, useState } from "react";
-function App() {
-  const [counter, setCounter] = useState(0);
-  useEffect(()=>{
-    // runs every render id dependecny not added otherwise runs initially
-    setCounter(100)
-  },[])
+import React, { useEffect } from "react";
+import './App.css';
+import SearchIcon from './search.svg';
+// 925dc62a
+const API_URL = "http://www.omdbapi.com?apikey=925dc62a";
+const App = () => {
+  const searchMovies = async (title) =>{
+    const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json();
+    console.log(data)
+  }
+  useEffect(() => {
+    searchMovies('Spider')
+  }, []);
+
+
   return (
-    <div className="App">
-      <button onClick={()=> setCounter((prevCount)=> prevCount+1 )}>+</button>
-      <h1>{counter}</h1>
-      <button onClick={()=> setCounter((prevCount)=> prevCount-1 )}>-</button>
+
+  <div className="app">
+
+    <h1>Movie App</h1>
+    <div className="search">
+      <input
+      placeholder="Search for movies"
+      value="superman"
+      onChange={()=>{}}
+      />
+      <img 
+      src={SearchIcon}
+      alt="SearchIcon"
+      onClick={()=>{}}/>
     </div>
-  );
-}
+  </div>
+  )
+};
 
 export default App;
